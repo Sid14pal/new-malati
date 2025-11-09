@@ -7,7 +7,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Malati Store</p>",
+            "text": "<p>Malati Store </p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
