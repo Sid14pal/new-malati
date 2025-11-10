@@ -1,17 +1,59 @@
-<div class="custom-banner" style="background-color: {{ section.settings.background_color }};">
- {% assign banner = section.settings.banner_image %}
-{% if banner %}
-  <img 
-    src="{{ banner | image_url: width: 1600 }}" 
-    alt="Banner" 
-    width="{{ banner.width }}" 
-    height="{{ banner.height }}" 
-    loading="lazy"
-  >
-{% endif %}
-  <h2>{{ section.settings.heading }}</h2>
-  <p>{{ section.settings.subtext }}</p>
+<div 
+  class="custom-banner" 
+  style="background-color: {{ section.settings.background_color }};"
+>
+  {% if section.settings.banner_image != blank %}
+    {% assign banner = section.settings.banner_image %}
+    <img 
+      src="{{ banner | image_url: width: 1600 }}" 
+      alt="Banner" 
+      width="{{ banner.width }}" 
+      height="{{ banner.height }}" 
+      loading="lazy"
+    >
+  {% elsif section.settings.banner_image_path != blank %}
+    <img 
+      src="{{ section.settings.banner_image_path | asset_url }}" 
+      alt="Banner" 
+      width="1600" 
+      height="800" 
+      loading="lazy"
+    >
+  {% endif %}
+
+  <div class="banner-text">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subtext }}</p>
+  </div>
 </div>
+
+<style>
+.custom-banner {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+.custom-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+.banner-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.banner-text p {
+  font-size: 1.2rem;
+}
+</style>
 
 {% schema %}
 {
@@ -26,7 +68,14 @@
     {
       "type": "image_picker",
       "id": "banner_image",
-      "label": "Banner Image"
+      "label": "Upload Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "banner_image_path",
+      "label": "Manual Banner Image Path (optional)",
+      "default": "banner.jpg",
+      "info": "If you prefer to use a theme asset or CDN URL instead of uploading an image."
     },
     {
       "type": "text",
