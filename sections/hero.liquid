@@ -5,7 +5,7 @@
   {% if section.settings.banner_image != blank %}
     {% assign banner = section.settings.banner_image %}
     <img 
-      src="{{ banner | image_url: width: 1600 }}" 
+      src="{{ section.settings.banner_image_path | image_url: width: 1600 }}" 
       alt="Banner" 
       width="{{ banner.width }}" 
       height="{{ banner.height }}" 
