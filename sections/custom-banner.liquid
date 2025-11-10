@@ -1,0 +1,107 @@
+{% comment %}
+  Custom Banner Section
+{% endcomment %}
+
+<section class="custom-banner">
+  {% if section.settings.banner_image != blank %}
+    <div class="banner-image">
+      {% if section.settings.banner_image != blank %}
+  {% assign banner = section.settings.banner_image %}
+  <div class="banner-image">
+    <img 
+      src="{{ banner | image_url: width: 1600 }}" 
+      alt="Banner"
+      width="{{ banner.width }}" 
+      height="{{ banner.height }}" 
+      loading="lazy"
+    >
+  </div>
+{% endif %}
+    </div>
+  {% endif %}
+
+  {% if section.settings.banner_heading != blank %}
+    <div class="banner-content">
+      <h2>{{ section.settings.banner_heading }}</h2>
+      {% if section.settings.banner_subtext != blank %}
+        <p>{{ section.settings.banner_subtext }}</p>
+      {% endif %}
+      {% if section.settings.banner_button_label != blank and section.settings.banner_button_link != blank %}
+        <a href="{{ section.settings.banner_button_link }}" class="banner-btn">
+          {{ section.settings.banner_button_label }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+</section>
+
+<style>
+.custom-banner {
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+.custom-banner .banner-image img {
+  width: 100%;
+  height: auto;
+}
+.custom-banner .banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.banner-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 25px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.banner-btn:hover {
+  background: #333;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Custom Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "banner_heading",
+      "label": "Banner Heading",
+      "default": "Welcome to Our Store"
+    },
+    {
+      "type": "text",
+      "id": "banner_subtext",
+      "label": "Banner Subtext",
+      "default": "Discover our latest collection"
+    },
+    {
+      "type": "text",
+      "id": "banner_button_label",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "banner_button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Banner"
+    }
+  ]
+}
+{% endschema %}
