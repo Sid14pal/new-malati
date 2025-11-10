@@ -16,8 +16,8 @@
       "settings": {
         "background_color": "#000000",
         "banner_image_path": "banner.jpg",
-        "heading": "Banner Headingdwdwdwdw",
-        "subtext": "Banner subtext hereswswswswwswsws"
+        "heading": "Banner",
+        "subtext": "Banner subtext"
       }
     },
     "product_list_fa6P9H": {
@@ -215,8 +215,5 @@
       }
     }
   },
-  "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
-  ]
+  "order": ["hero_jVaWmY", "product_list_fa6P9H"]
 }
