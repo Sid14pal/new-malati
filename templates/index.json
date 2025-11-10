@@ -14,7 +14,7 @@
       "name": "t:names.hero",
       "settings": {
         "background_color": "#000000",
-        "banner_image": "shopify://shop_images/banner_bg.jpg",
+        "banner_image": "shopify://shop_images/banner.jpg",
         "banner_image_path": "banner.jpg",
         "heading": "Banner Heading",
         "subtext": "Banner subtext hereswswswswwswsws"
